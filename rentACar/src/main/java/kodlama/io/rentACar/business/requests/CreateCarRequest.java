@@ -15,20 +15,16 @@ public class CreateCarRequest {
 	@NotBlank
 	private String plate;
 	
-	@NotNull
-	@NotBlank
+	@NotNull(message = "Please enter id")
 	private double dailyPrice;
 	
-	@NotNull
-	@NotBlank
+	@NotNull(message = "Please enter id")
 	private int modelYear;
 	
-	@NotNull
-	@NotBlank
+	@NotNull(message = "Please enter id")
 	private int state;
 	
-	@NotNull
-	@NotBlank
+	@NotNull(message = "Please enter id")
 	private int modelId;
 
 }

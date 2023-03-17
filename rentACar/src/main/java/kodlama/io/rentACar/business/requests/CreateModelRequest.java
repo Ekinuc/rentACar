@@ -16,9 +16,7 @@ public class CreateModelRequest {
 	@NotBlank
 	@Size(min = 3 , max = 20)
 	private String name;
-	
-	@NotNull
-	@NotBlank
+	@NotNull(message = "Please enter id")
 	private int brandId;
 
 }

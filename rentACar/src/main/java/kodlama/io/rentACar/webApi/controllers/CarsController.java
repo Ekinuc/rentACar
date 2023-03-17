@@ -15,39 +15,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlama.io.rentACar.business.abstracts.ModelService;
-import kodlama.io.rentACar.business.requests.CreateModelRequest;
-import kodlama.io.rentACar.business.requests.UpdateModelRequest;
-import kodlama.io.rentACar.business.responses.GetAllModelsResponse;
+import kodlama.io.rentACar.business.abstracts.CarService;
+import kodlama.io.rentACar.business.requests.CreateCarRequest;
+import kodlama.io.rentACar.business.requests.UpdateCarRequest;
+import kodlama.io.rentACar.business.responses.GetAllCarsResponse;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/api/models")
+@RequestMapping("/api/cars")
 @AllArgsConstructor
-public class ModelsController {
-	
-	private ModelService modelService;
+public class CarsController {
+	private CarService carService;
 	
 	@GetMapping()
-	public List<GetAllModelsResponse> getAll(){
-		return modelService.getAll();
+	public List<GetAllCarsResponse> getAll() {
+		return this.carService.getAll();
 	}
+	
 	
 	@PostMapping()
 	@ResponseStatus(code=HttpStatus.CREATED)
-	public void add(@RequestBody() @Valid CreateModelRequest createModelRequest) {
-		this.modelService.add(createModelRequest);
+	public void add(@RequestBody @Valid CreateCarRequest createCarRequest) {
+		this.carService.add(createCarRequest);
 	}
 	
 	@PutMapping
-	public void update(@RequestBody UpdateModelRequest updateModelRequest) {
-		this.modelService.update(updateModelRequest);
-		
+	public void update(@RequestBody UpdateCarRequest updateCarRequest) {
+		this.carService.update(updateCarRequest);
 	}
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable int id) {
-		this.modelService.delete(id);
+		this.carService.delete(id);
 	}
 
 }
